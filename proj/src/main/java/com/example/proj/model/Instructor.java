@@ -1,10 +1,12 @@
 package com.example.proj.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.sql.Date;
 import java.util.List;
 
+@Data
 @Entity
 @DiscriminatorValue("instructor")
 @Table(name = "instructors")
