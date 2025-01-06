@@ -2,7 +2,9 @@ package com.example.proj.model;
 
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "results")
 public class Result {

@@ -1,7 +1,9 @@
 package com.example.proj.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "submissions")
 public class Submission {
