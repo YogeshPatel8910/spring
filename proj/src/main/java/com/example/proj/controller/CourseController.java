@@ -51,4 +51,32 @@ public class CourseController {
         }
     }
 
+    @PutMapping("instructor/{id}")
+    public ResponseEntity<Optional<CourseDTO>> updateCourse(@PathVariable(name = "id")long id, @RequestBody CourseDTO courseDTO){
+        try{
+            Optional<CourseDTO> updatedCourse = courseService.updateCourse(id,courseDTO);
+            if(updatedCourse.isPresent())
+                return new ResponseEntity<>(updatedCourse,HttpStatus.OK);
+            else
+                return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("admin/{id}")
+    public ResponseEntity<HttpStatus> deleteCourse(@PathVariable(name = "id")long id,@RequestBody CourseDTO courseDTO){
+        try{
+            boolean isDeleted = courseService.deleteCourse(id);
+            if(isDeleted){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            else
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

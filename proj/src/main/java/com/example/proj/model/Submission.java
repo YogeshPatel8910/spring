@@ -1,5 +1,6 @@
 package com.example.proj.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,10 +13,12 @@ public class Submission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "assignmentId")
     private Assignment assignment;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "studentId")
     private Student student;

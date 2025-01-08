@@ -1,5 +1,6 @@
 package com.example.proj.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class Lesson {
 
     private Integer duration;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "courseId")
     private Course course;

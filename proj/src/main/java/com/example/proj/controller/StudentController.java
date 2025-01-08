@@ -20,7 +20,7 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping("/student")
+    @GetMapping
     public ResponseEntity<List<Student>> getAllUsers(){
         try{
             List<Student> student = studentService.getAllStudent();

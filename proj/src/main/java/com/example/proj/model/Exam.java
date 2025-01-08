@@ -1,5 +1,6 @@
 package com.example.proj.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -21,10 +22,12 @@ public class Exam {
 
     private int duration;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "courseId")
     private Course course;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "exam")
     private List<Result> result;
 

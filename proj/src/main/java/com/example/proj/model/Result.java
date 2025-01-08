@@ -1,5 +1,6 @@
 package com.example.proj.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Data;
@@ -13,10 +14,12 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "examId")
     private Exam exam;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "studentId")
     private  Student student;
