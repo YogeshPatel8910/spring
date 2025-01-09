@@ -20,8 +20,8 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping("/student")
-    public ResponseEntity<?> getAllUsers(){
+    @GetMapping
+    public ResponseEntity<List<Student>> getAllUsers(){
         try{
             List<Student> student = studentService.getAllStudent();
             if (student.isEmpty()){

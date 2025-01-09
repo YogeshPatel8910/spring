@@ -1,5 +1,9 @@
 package com.example.proj.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,6 +14,7 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("instructor")
 @Table(name = "instructors")
+@JsonIgnoreProperties(value = "instructor")
 public class Instructor extends User{
 
     @Id
@@ -20,6 +25,7 @@ public class Instructor extends User{
 
     private Date joiningDate;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "instructor")
     private List<Course> course;
 

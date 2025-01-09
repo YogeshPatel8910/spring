@@ -1,5 +1,6 @@
 package com.example.proj.controller;
 
+import com.example.proj.dto.InstructorDTO;
 import com.example.proj.model.Instructor;
 import com.example.proj.model.User;
 import com.example.proj.service.InstructorService;
@@ -21,9 +22,9 @@ public class InstructorController {
     private InstructorService instructorService;
 
     @GetMapping
-    public ResponseEntity<?> getAllUsers(){
+    public ResponseEntity<List<InstructorDTO>> getAllUsers(){
         try{
-            List<Instructor> instructor = instructorService.getAllInstructors();
+            List<InstructorDTO> instructor = instructorService.getAllInstructors();
             if (instructor.isEmpty()){
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }

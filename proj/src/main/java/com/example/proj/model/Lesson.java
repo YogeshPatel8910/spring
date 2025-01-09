@@ -1,7 +1,10 @@
 package com.example.proj.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "lessons")
 public class Lesson {
@@ -16,6 +19,7 @@ public class Lesson {
 
     private Integer duration;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "courseId")
     private Course course;

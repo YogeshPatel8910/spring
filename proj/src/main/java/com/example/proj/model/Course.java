@@ -1,13 +1,22 @@
 package com.example.proj.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.Fetch;
+import lombok.Data;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.text.Format;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "courses")
-public class Course{
+public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,11 +42,13 @@ public class Course{
     @ManyToMany(mappedBy = "course")
     private List<Student> student;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "instructorId")
     private Instructor instructor;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId")
     private Category category;
 

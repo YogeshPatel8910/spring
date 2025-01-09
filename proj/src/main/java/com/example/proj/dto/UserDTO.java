@@ -1,6 +1,7 @@
 package com.example.proj.dto;
 
 import com.example.proj.model.ERole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.OptBoolean;
@@ -25,6 +26,7 @@ public class UserDTO {
     private Long id;
     private String name;
     private String email;
+    @JsonIgnore
     private String password;
     private ERole role;
 
